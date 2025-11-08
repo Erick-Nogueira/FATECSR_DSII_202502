@@ -1,0 +1,555 @@
+type: collection.insomnia.rest/5.0
+name: "Mapa de Sala - DS II - Fatec São Roque "
+meta:
+  id: wrk_aad8a12fdb2643779b561509349ecf01
+  created: 1760458362495
+  modified: 1760458417444
+  description: ""
+collection:
+  - name: Sala
+    meta:
+      id: fld_a90e4f223b14462a9f4c95aaf2401a68
+      created: 1760458690364
+      modified: 1760458690364
+      sortKey: -1760458690364
+      description: ""
+    children:
+      - url: http://localhost/FatecSRDSII202502/Sala/inserir
+        name: inserir
+        meta:
+          id: req_86069c42246a400cb658c44cfd5c0880
+          created: 1760458714280
+          modified: 1762287862602
+          isPrivate: false
+          description: ""
+          sortKey: -1760458714280
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "",
+            	"descricao" : "",
+            	"andar" : "",
+            	"capacidade" : ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Sala/consultar
+        name: consulta
+        meta:
+          id: req_5097adac78d0499ab12b95d69461491f
+          created: 1762288959318
+          modified: 1762288959318
+          isPrivate: false
+          description: ""
+          sortKey: -1760458714130
+        method: GET
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "",
+            	"descricao" : "",
+            	"andar" : "",
+            	"capacidade" : ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Sala/alterar
+        name: alterar
+        meta:
+          id: req_ffb53a2cb2a542178cff1b5f057c3ade
+          created: 1762289470735
+          modified: 1762289759501
+          isPrivate: false
+          description: ""
+          sortKey: -1760458714080
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "",
+            	"descricao" : "",
+            	"andar" : "",
+            	"capacidade" : ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Sala/desativar
+        name: desativar
+        meta:
+          id: req_c2e4fbbcf37c4105b43bf966492c2bf1
+          created: 1762289478898
+          modified: 1762639335948
+          isPrivate: false
+          description: ""
+          sortKey: -1760458714030
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "1"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Horario
+    meta:
+      id: fld_a84d7cd0828a4a9fb92f71fc9791673a
+      created: 1762288095150
+      modified: 1762288095150
+      sortKey: -1762288095150
+      description: ""
+    children:
+      - url: http://localhost/FatecSRDSII202502/Horario/inserir
+        name: inserir
+        meta:
+          id: req_7959f3beabe2403ca00977ed615a8a5b
+          created: 1762288132418
+          modified: 1762290501824
+          isPrivate: false
+          description: ""
+          sortKey: -1762287665913.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"descricao" : "teste",
+            	"horaInicial" : "12:00",
+            	"horaFinal" : "13:30"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Horario/consultar
+        name: consulta
+        meta:
+          id: req_112db68f0f9349ae8fbe3672320436cb
+          created: 1762289423809
+          modified: 1762290677122
+          isPrivate: false
+          description: ""
+          sortKey: -1762287436324.75
+        method: GET
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "",
+            	"descricao" : "",
+            	"horaInicial" : "",
+            	"horaFinal" : ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Horario/alterar
+        name: alterar
+        meta:
+          id: req_3da7b0120ad34743ad968304a07b26fa
+          created: 1762289432594
+          modified: 1762290734801
+          isPrivate: false
+          description: ""
+          sortKey: -1762287321530.375
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "1",
+            	"descricao" : "",
+            	"horaInicial" : "10:00",
+            	"horaFinal" : ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Horario/desativar
+        name: desativar
+        meta:
+          id: req_385f3cfe90654248a2f9f0e16325420a
+          created: 1762289442736
+          modified: 1762290748047
+          isPrivate: false
+          description: ""
+          sortKey: -1762287264133.1875
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "1"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Professor
+    meta:
+      id: fld_9e978bc7612a4eaf9e781593c2db71b7
+      created: 1762288103231
+      modified: 1762288103231
+      sortKey: -1762288103231
+      description: ""
+    children:
+      - url: http://localhost/FatecSRDSII202502/Professor/inserir
+        name: inserir
+        meta:
+          id: req_7dc2dee750084bbbb560a6b353e8eb6b
+          created: 1762288121876
+          modified: 1762638321227
+          isPrivate: false
+          description: ""
+          sortKey: -1762289366130
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	
+            	"nome" : "erick",
+            	"cpf" : "46057311809",
+            	"tipo" : "TI"
+            	
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Professor/consultar
+        name: consulta
+        meta:
+          id: req_bca08c403f464fe6b500fb7fc88f1616
+          created: 1762289338583
+          modified: 1762637413615
+          isPrivate: false
+          description: ""
+          sortKey: -1762289366030
+        method: GET
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "",
+            	"nome" : "",
+            	"cpf" : "",
+            	"tipo" : ""
+            	
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Professor/desativar
+        name: desativar
+        meta:
+          id: req_0846ed2f632148ce93e1811e080f775d
+          created: 1762289350664
+          modified: 1762639735363
+          isPrivate: false
+          description: ""
+          sortKey: -1762289365830
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "3"
+
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Professor/alterar
+        name: alterar
+        meta:
+          id: req_99ff6b292a534631a85be66adbd36028
+          created: 1762289358967
+          modified: 1762639783670
+          isPrivate: false
+          description: ""
+          sortKey: -1762289365880
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "1",
+            	"nome" : "lucas",
+            	"cpf" : "",
+            	"tipo" : "comercial"
+            	
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Turma
+    meta:
+      id: fld_0f491bb70da64c17b33ab15da9066962
+      created: 1762288112983
+      modified: 1762289289605
+      sortKey: -1762288112983
+      description: ""
+    children:
+      - url: http://localhost/FatecSRDSII202502/Turma/consultar
+        name: consulta
+        meta:
+          id: req_ce8c9c8e88c5498cbedc8c706d988d7b
+          created: 1762287895490
+          modified: 1762289225236
+          isPrivate: false
+          description: ""
+          sortKey: -1762288917980
+        method: GET
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "",
+            	"descricao" : "",
+            	"capacidade" : "",
+            	"dataInicio" : ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Turma/inserir
+        name: inserir
+        meta:
+          id: req_8cb165f6b299459199157a9af7b70986
+          created: 1762288918080
+          modified: 1762289261801
+          isPrivate: false
+          description: ""
+          sortKey: -1762288918080
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"descricao" : "",
+            	"capacidade" : "",
+            	"dataInicio" : ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Turma/desativar
+        name: desativar
+        meta:
+          id: req_6a9bb2037d1445229132040279ab83aa
+          created: 1762288983766
+          modified: 1762289080539
+          isPrivate: false
+          description: ""
+          sortKey: -1762288917880
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Turma/alterar
+        name: alterar
+        meta:
+          id: req_75a9ce2ebb664011982f9735472cd04f
+          created: 1762289003803
+          modified: 1762289179089
+          isPrivate: false
+          description: ""
+          sortKey: -1762288917930
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"codigo" : "",
+            	"descricao" : "",
+            	"capacidade" : "",
+            	"dataInicio" : ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_802ef36d6cbf797265798dec49330e0f51310abd
+    created: 1760458362500
+    modified: 1760458362500
+environments:
+  name: Base Environment
+  meta:
+    id: env_802ef36d6cbf797265798dec49330e0f51310abd
+    created: 1760458362498
+    modified: 1760458362498
+    isPrivate: false
