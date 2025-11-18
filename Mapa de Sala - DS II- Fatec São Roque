@@ -19,7 +19,7 @@ collection:
         meta:
           id: req_86069c42246a400cb658c44cfd5c0880
           created: 1760458714280
-          modified: 1762287862602
+          modified: 1762721638739
           isPrivate: false
           description: ""
           sortKey: -1760458714280
@@ -28,10 +28,10 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"codigo" : "",
-            	"descricao" : "",
-            	"andar" : "",
-            	"capacidade" : ""
+            	"codigo" : "5",
+            	"descricao" : "Tecnologia",
+            	"andar" : "1",
+            	"capacidade" : "30"
             }
         headers:
           - name: Content-Type
@@ -152,7 +152,7 @@ collection:
         meta:
           id: req_7959f3beabe2403ca00977ed615a8a5b
           created: 1762288132418
-          modified: 1762290501824
+          modified: 1762721659223
           isPrivate: false
           description: ""
           sortKey: -1762287665913.5
@@ -162,8 +162,8 @@ collection:
           text: |-
             {
             	"descricao" : "teste",
-            	"horaInicial" : "12:00",
-            	"horaFinal" : "13:30"
+            	"horaInicial" : "14:00",
+            	"horaFinal" : "17:30"
             }
         headers:
           - name: Content-Type
@@ -448,20 +448,21 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost/FatecSRDSII202502/Turma/inserir
-        name: inserir
+      - url: http://localhost/FatecSRDSII202502/Turma/alterar
+        name: alterar
         meta:
-          id: req_8cb165f6b299459199157a9af7b70986
-          created: 1762288918080
-          modified: 1762289261801
+          id: req_75a9ce2ebb664011982f9735472cd04f
+          created: 1762289003803
+          modified: 1762289179089
           isPrivate: false
           description: ""
-          sortKey: -1762288918080
-        method: POST
+          sortKey: -1762288917930
+        method: PUT
         body:
           mimeType: application/json
           text: |-
             {
+            	"codigo" : "",
             	"descricao" : "",
             	"capacidade" : "",
             	"dataInicio" : ""
@@ -479,15 +480,46 @@ collection:
             send: true
             store: true
           rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Turma/inserir
+        name: inserir
+        meta:
+          id: req_7823621f1d0f44ae92bc9410d46ae66d
+          created: 1762716167149
+          modified: 1762721727291
+          isPrivate: false
+          description: ""
+          sortKey: -1762288918030
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"descricao" : "1",
+            	"capacidade" : "30",
+            	"dataInicio" : "2025-10-15"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
       - url: http://localhost/FatecSRDSII202502/Turma/desativar
         name: desativar
         meta:
-          id: req_6a9bb2037d1445229132040279ab83aa
-          created: 1762288983766
-          modified: 1762289080539
+          id: req_b94a0213dbe44e99aec47aade55896ff
+          created: 1762716194790
+          modified: 1762716194790
           isPrivate: false
           description: ""
-          sortKey: -1762288917880
+          sortKey: -1762288291896.75
         method: DELETE
         body:
           mimeType: application/json
@@ -508,24 +540,130 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost/FatecSRDSII202502/Turma/alterar
-        name: alterar
+  - name: Mapa
+    meta:
+      id: fld_ecc9fbc35fc949f093612e0769176a26
+      created: 1762716151901
+      modified: 1762716151901
+      sortKey: -1762716151901
+      description: ""
+    children:
+      - url: http://localhost/FatecSRDSII202502/Mapa/inserir
+        name: inserir
         meta:
-          id: req_75a9ce2ebb664011982f9735472cd04f
-          created: 1762289003803
-          modified: 1762289179089
+          id: req_8cb165f6b299459199157a9af7b70986
+          created: 1762288918080
+          modified: 1762721860943
           isPrivate: false
           description: ""
-          sortKey: -1762288917930
-        method: PUT
+          sortKey: -1762716171182
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "dataReserva": "2025-10-15",
+              "codSala": "4",
+              "codHorario": "3",
+              "codTurma": "1",
+              "codProfessor":"1" 
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Mapa/desativar
+        name: desativar
+        meta:
+          id: req_6a9bb2037d1445229132040279ab83aa
+          created: 1762288983766
+          modified: 1762721936484
+          isPrivate: false
+          description: ""
+          sortKey: -1762716170882
+        method: DELETE
         body:
           mimeType: application/json
           text: |-
             {
-            	"codigo" : "",
-            	"descricao" : "",
-            	"capacidade" : "",
-            	"dataInicio" : ""
+              "codigo": "6"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Mapa/consultar
+        name: consulta
+        meta:
+          id: req_3d1b28311aef45bd891faac4045a2b49
+          created: 1762716178441
+          modified: 1762718725460
+          isPrivate: false
+          description: ""
+          sortKey: -1762716171132
+        method: GET
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "codigo": "",
+              "dataReserva": "",
+              "codSala": "",
+              "codHorario": "",
+              "codTurma": "",
+              "codProfessor": ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost/FatecSRDSII202502/Mapa/alterar
+        name: alterar
+        meta:
+          id: req_65969e4b880e45b1b2c091c283d39dea
+          created: 1762716186045
+          modified: 1762721928246
+          isPrivate: false
+          description: ""
+          sortKey: -1762716171082
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+            	"codigo" : "6",
+              "dataReserva": "2025-10-17",
+              "codSala": "4",
+              "codHorario": "3",
+              "codTurma": "1",
+              "codProfessor":"1" 
             }
         headers:
           - name: Content-Type

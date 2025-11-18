@@ -294,7 +294,7 @@ class Turma extends CI_Controller {
 
                     if($retornoCapacidade['codigoHelper'] != 0){
                         $erros[] = ['codigo' => $retornoCapacidade['codigoHelper'],
-                                    'campo' => 'Andar',
+                                    'campo' => 'Capacidade',
                                     'msg' => $retornoCapacidade['msg']];
                     }
 

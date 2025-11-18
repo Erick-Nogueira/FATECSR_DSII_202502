@@ -14,13 +14,16 @@ class M_horario extends CI_Model
     98 - Método auxiliar de consulta que não trouxe dados
     */
 
-    public function inserir($descricao, $horaInicial, $horaFinal){
+    public function inserir($descricao, $horaInicial, $horaFinal)
+    {
         try {
             //Verifico se o horário já está cadastrado
             $retornoConsulta = $this->consultarHorario('', $horaInicial, $horaFinal);
 
-            if ($retornoConsulta['codigo'] != 9 && 
-                $retornoConsulta['codigo'] != 10) {
+            if (
+                $retornoConsulta['codigo'] != 9 &&
+                $retornoConsulta['codigo'] != 10
+            ) {
 
                 //Query de inserção dos dados
                 $this->db->query("insert into tbl_horario (descricao, hora_ini, hora_fim)
@@ -32,7 +35,6 @@ class M_horario extends CI_Model
                         'codigo' => 1,
                         'msg' => 'Horário cadastrado corretamente.'
                     );
-
                 } else {
                     $dados = array(
                         'codigo' => 8,
@@ -40,8 +42,10 @@ class M_horario extends CI_Model
                     );
                 }
             } else {
-                $dados = array('codigo' => $retornoConsulta['codigo'],
-                                'msg' => $retornoConsulta['msg']);
+                $dados = array(
+                    'codigo' => $retornoConsulta['codigo'],
+                    'msg' => $retornoConsulta['msg']
+                );
             }
         } catch (Exception $e) {
             $dados = array(
@@ -54,15 +58,16 @@ class M_horario extends CI_Model
         //acima oela estrutura de decisão if
         return $dados;
     }
-    
+
     //Método privado, pois será auxiliar nesta lasse
-    private function consultarHorario($codigo, $horaInicial, $horaFinal){
+    public function consultarHorario($codigo, $horaInicial, $horaFinal)
+    {
         try {
             //Query para consultar dados de acordo com parâmetros passados
-            if($codigo != ''){
+            if ($codigo != '') {
                 $sql = "select * from tbl_horario
                     where codigo = $codigo ";
-            }else{
+            } else {
                 $sql = "select * from tbl_horario
                 where hora_ini = '$horaInicial'
                 and hora_fim = '$horaFinal'";
@@ -70,9 +75,9 @@ class M_horario extends CI_Model
             $retornoHorario = $this->db->query($sql);
 
             //Verificar se a consulta ocorreu com sucesso
-            if($retornoHorario->num_rows() > 0){
+            if ($retornoHorario->num_rows() > 0) {
                 $linha = $retornoHorario->row();
-                if(trim($linha->estatus) == "D") {
+                if (trim($linha->estatus) == "D") {
                     $dados = array(
                         'codigo' => 9,
                         'msg' => 'Horário desativado no sistema, caso precise reativar o mesmo,
@@ -84,25 +89,25 @@ class M_horario extends CI_Model
                         'msg' => 'Horário já cadastro no sistema.'
                     );
                 }
-
             } else {
                 $dados =  array(
-                        'codigo' => 98,
-                        'msg' => 'Horário não encontrado.'
-                    );
+                    'codigo' => 98,
+                    'msg' => 'Horário não encontrado.'
+                );
             }
         } catch (Exception $e) {
             $dados =  array(
-                        'codigo' => 0,
-                        'msg' => 'ATENÇÃO: O seguinte erro aconteceu -> .' . $e->getMessage()
-                    );
+                'codigo' => 0,
+                'msg' => 'ATENÇÃO: O seguinte erro aconteceu -> .' . $e->getMessage()
+            );
         }
         //Envia o array $dados com as informações tratadas
         //acima pela estrutura de decisão if
         return $dados;
     }
 
-    public function consultar($codigo, $descricao, $horaInicial, $horaFinal){
+    public function consultar($codigo, $descricao, $horaInicial, $horaFinal)
+    {
         try {
             //Query para consultar dados de acordo com parâmetros passados
             $sql = "select * from tbl_horario where estatus = '' ";
@@ -134,7 +139,6 @@ class M_horario extends CI_Model
                     'msg' => 'Consulta efetuada com sucesso.',
                     'dados' => $retorno->result()
                 );
-            
             } else {
                 $dados = array(
                     'codigo' => 11,
@@ -151,8 +155,9 @@ class M_horario extends CI_Model
         //acima pela estrutura de decisão if
         return $dados;
     }
-    
-    public function alterar($codigo, $descricao, $horaInicial, $horaFinal){
+
+    public function alterar($codigo, $descricao, $horaInicial, $horaFinal)
+    {
         try {
             //Verifico se o horário já está cadastrado
             $retornoConsulta = $this->consultar($codigo, '', '', '');
@@ -186,7 +191,6 @@ class M_horario extends CI_Model
                         'codigo' => 1,
                         'msg' => 'Horário atualizado corretamente.'
                     );
-
                 } else {
                     $dados = array(
                         'codigo' => 8,
@@ -194,10 +198,11 @@ class M_horario extends CI_Model
                     );
                 }
             } else {
-                $dados = array('codigo' => $retornoConsulta['codigo'],
-                               'msg' => $retornoConsulta['msg']);
+                $dados = array(
+                    'codigo' => $retornoConsulta['codigo'],
+                    'msg' => $retornoConsulta['msg']
+                );
             }
-        
         } catch (Exception $e) {
             $dados = array(
                 'codigo' => 00,
@@ -209,13 +214,14 @@ class M_horario extends CI_Model
         return $dados;
     }
 
-     public function desativar($codigo){
+    public function desativar($codigo)
+    {
         try {
             //Verifico se o horário já está cadastrado
             $retornoConsulta = $this->consultarHorario($codigo, '', '');
 
             if ($retornoConsulta['codigo'] == 10) {
-                
+
                 //Query de atualização dos dados
                 $this->db->query("update tbl_horario set estatus = 'D'
                                   where codigo = $codigo");
@@ -226,17 +232,17 @@ class M_horario extends CI_Model
                         'codigo' => 1,
                         'msg' => 'Horário DESATIVADO corretamente.'
                     );
-
                 } else {
                     $dados = array(
                         'codigo' => 8,
                         'msg' => 'Houve algum problema na DESATIVAÇÃO do Horário.'
                     );
                 }
-            
             } else {
-                $dados = array('codigo' => $retornoConsulta['codigo'],
-                               'msg' => $retornoConsulta['msg']);
+                $dados = array(
+                    'codigo' => $retornoConsulta['codigo'],
+                    'msg' => $retornoConsulta['msg']
+                );
             }
         } catch (Exception $e) {
             $dados = array(
@@ -249,4 +255,3 @@ class M_horario extends CI_Model
         return $dados;
     }
 }
-?>

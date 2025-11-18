@@ -92,7 +92,7 @@ class Horario extends CI_Controller {
             ];
 
             if (verificarParam($resultado, $lista) != 1) {
-                //validar vindos de forma correta do frontend (Helper)
+               
                 $erros[] = ['codigo' => 99, 'msg' => 'Campos inexistente ou incorretos no FrontEnd. '];
             }else{
                 // Validar campos quanto ao tipo de dado e tamanho (helper)

@@ -16,26 +16,24 @@ class M_turma extends CI_Model
 
     public function inserir($descricao, $capacidade, $dataInicio)
     {
-        try{
+        try {
 
             //Query de inserção dos dados
             $this->db->query("insert into tbl_turma (descricao, capacidade, dataInicio)
                             values ('$descricao', $capacidade, '$dataInicio')");
 
             //Verificar se a inserção ocorreu com sucesso
-            if($this->db->affected_rows() > 0) {
+            if ($this->db->affected_rows() > 0) {
                 $dados = array(
                     'codigo' => 1,
                     'msg' => 'Turma cadastrada corretamente.'
                 );
-
             } else {
                 $dados = array(
                     'codigo' => 8,
                     'msg' => 'Houve algum problema na inserção na tabela de turma.'
                 );
             }
-
         } catch (Exception $e) {
             $dados = array(
                 'codigo' => 0,
@@ -60,15 +58,15 @@ class M_turma extends CI_Model
                 $sql = $sql . "and codigo = $codigo ";
             }
 
-             if (trim($descricao) != '') {
+            if (trim($descricao) != '') {
                 $sql = $sql . "and descricao like  = '%$descricao' ";
             }
 
-             if (trim($capacidade) != '') {
+            if (trim($capacidade) != '') {
                 $sql = $sql . "and capacidade = $capacidade ";
             }
 
-             if (trim($dataInicio) != '') {
+            if (trim($dataInicio) != '') {
                 $sql = $sql . "and dataInicio = '$dataInicio' ";
             }
 
@@ -81,7 +79,6 @@ class M_turma extends CI_Model
                     'msg' => 'Consulta efetuada com sucesso',
                     'dados' => $retorno->result()
                 );
-
             } else {
                 $dados = array(
                     'codigo' => 11,
@@ -99,14 +96,13 @@ class M_turma extends CI_Model
         return $dados;
     }
 
-
     public function alterar($codigo, $descricao, $capacidade, $dataInicio)
     {
         try {
             // Verifica se a truma já está cadastrada
             $retornoConsulta = $this->consultaTurmaCod($codigo);
 
-            if ($retornoConsulta['codigo'] ==10) {
+            if ($retornoConsulta['codigo'] == 10) {
                 // Monta a query dinâmica
                 $query = "UPDATE tbl_turma SET ";
                 $update = [];
@@ -138,7 +134,7 @@ class M_turma extends CI_Model
 
                 // Executa a query
                 $this->db->query($query, $params);
-                
+
                 // Verifica se a atualização foi bem-sucedida
                 if ($this->db->affected_rows() > 0) {
                     $dados = array(
@@ -153,21 +149,21 @@ class M_turma extends CI_Model
                 }
             } else {
                 $dados = array(
-                        'codigo' => 5,
-                        'msg' => 'Turma não cadastrada no sistema.'
-                    );
+                    'codigo' => 5,
+                    'msg' => 'Turma não cadastrada no sistema.'
+                );
             }
         } catch (Exception $e) {
             $dados = array(
-                        'codigo' => 00,
-                        'msg' => 'ATENÇÂo: O seguinte erro aconteceu -> ' . $e->getMessage()
-                    );
+                'codigo' => 00,
+                'msg' => 'ATENÇÂo: O seguinte erro aconteceu -> ' . $e->getMessage()
+            );
         }
 
         return $dados;
     }
 
-    private function consultaTurmaCod($codigo)
+    public function consultaTurmaCod($codigo)
     {
         try {
             //Query para consultar dados de acordo com parâmetros passados
@@ -183,16 +179,17 @@ class M_turma extends CI_Model
                         'codigo' => 9,
                         'msg' => 'Turma desativada no sistema. '
                     );
-                }else{
+                } else {
                     $dados = array(
                         'codigo' => 10,
                         'msg' => 'Consulta efetuada com sucesso. '
                     );
                 }
-
             } else {
-                $dados = array('codigo' => 12,
-                               'msg' => 'Turma não encontrada. ');
+                $dados = array(
+                    'codigo' => 12,
+                    'msg' => 'Turma não encontrada. '
+                );
             }
         } catch (Exception $e) {
             $dados = array(
@@ -222,7 +219,6 @@ class M_turma extends CI_Model
                         'codigo' => 1,
                         'msg' => 'Turma DESATIVADA corretamente.'
                     );
-
                 } else {
                     $dados = array(
                         'codigo' => 8,
@@ -230,8 +226,10 @@ class M_turma extends CI_Model
                     );
                 }
             } else {
-                $dados = array('codigo' => $retornoConsulta['codigo'],
-                                     'msg' => $retornoConsulta['msg']);
+                $dados = array(
+                    'codigo' => $retornoConsulta['codigo'],
+                    'msg' => $retornoConsulta['msg']
+                );
             }
         } catch (Exception $e) {
             $dados = array(

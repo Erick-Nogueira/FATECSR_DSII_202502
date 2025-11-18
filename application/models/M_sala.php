@@ -13,14 +13,17 @@ class M_sala extends CI_Model
     */
 
 
-    public function inserir($codigo, $descricao, $andar, $capacidade){
-        try{
-           //Verifico se a a sala já está cadastrada
-           $retornoConsulta = $this->consultaSala($codigo);
+    public function inserir($codigo, $descricao, $andar, $capacidade)
+    {
+        try {
+            //Verifico se a a sala já está cadastrada
+            $retornoConsulta = $this->consultaSala($codigo);
 
-           if ($retornoConsulta['codigo'] != 9 &&
-               $retornoConsulta['codigo'] !=10) {
-               
+            if (
+                $retornoConsulta['codigo'] != 9 &&
+                $retornoConsulta['codigo'] != 10
+            ) {
+
                 //Query de inserção dos dados
                 $this->db->query("insert into tbl_sala (codigo, descricao, andar, capacidade)
                                 values ($codigo, '$descricao', $andar, $capacidade)");
@@ -37,14 +40,16 @@ class M_sala extends CI_Model
                     );
                 }
             } else {
-                $dados = array('codigo' => $retornoConsulta['codigo'],
-                                'msg' => $retornoConsulta['msg']);
+                $dados = array(
+                    'codigo' => $retornoConsulta['codigo'],
+                    'msg' => $retornoConsulta['msg']
+                );
             }
         } catch (Exception $e) {
-             $dados = array(
+            $dados = array(
                 'codigo' => 0,
                 'msg' => 'ATENÇÂO: O seguinte erro aconteceu -> ' . $e->getMessage()
-             );
+            );
         }
 
         //Envia o array $dados com as informações tratadas
@@ -53,7 +58,8 @@ class M_sala extends CI_Model
     }
 
     //Método privado, pois será auxiliar nesta classe
-    private function consultaSala($codigo){
+    private function consultaSala($codigo)
+    {
         try {
             //Query para consultar dados de acordo com parâmetros passados
             $sql = "select * from tbl_sala where codigo = $codigo ";
@@ -77,10 +83,10 @@ class M_sala extends CI_Model
                     );
                 }
             } else {
-                    $dados = array(
-                        'codigo' => 98,
-                        'msg' => 'Sala não encontrada.'
-                    );
+                $dados = array(
+                    'codigo' => 98,
+                    'msg' => 'Sala não encontrada.'
+                );
             }
         } catch (Exception $e) {
             $dados = array(
@@ -93,11 +99,9 @@ class M_sala extends CI_Model
         return $dados;
     }
 
-
-
-
-    public function consultar($codigo, $descricao, $andar, $capacidade){
-        try{
+    public function consultar($codigo, $descricao, $andar, $capacidade)
+    {
+        try {
             //Query para consultar dados de acordo com parÂmetros passados
             $sql = "select * from tbl_sala where estatus = ''";
 
@@ -105,15 +109,15 @@ class M_sala extends CI_Model
                 $sql = $sql . " and codigo = $codigo ";
             }
 
-             if (trim($andar) != '') {
+            if (trim($andar) != '') {
                 $sql = $sql . " and andar = '$andar' ";
             }
 
-             if (trim($descricao) != '') {
+            if (trim($descricao) != '') {
                 $sql = $sql . " and descricao like '%$descricao%' ";
             }
 
-             if (trim($capacidade) != '') {
+            if (trim($capacidade) != '') {
                 $sql = $sql . " and capacidade = '$capacidade' ";
             }
 
@@ -128,7 +132,6 @@ class M_sala extends CI_Model
                     'msg' => 'Consulta efetuada com sucesso. ',
                     'dados' => $retorno->result()
                 );
-                
             } else {
                 $dados = array(
                     'codigo' => 11,
@@ -138,7 +141,7 @@ class M_sala extends CI_Model
         } catch (Exception $e) {
             $dados = array(
                 'codigo' => 00,
-                 'msg' => 'ATENÇÃO: O seguinte erro aconteceu -> ' . $e->getMessage()
+                'msg' => 'ATENÇÃO: O seguinte erro aconteceu -> ' . $e->getMessage()
             );
         }
         //Envia o array $dados com as informações tratadas
@@ -146,11 +149,12 @@ class M_sala extends CI_Model
         return $dados;
     }
 
-    public function alterar($codigo, $descricao, $andar, $capacidade){
-        try{
+    public function alterar($codigo, $descricao, $andar, $capacidade)
+    {
+        try {
             //Verifico se a sala já está cadastrada
             $retornoConsulta = $this->consultaSala($codigo);
-            
+
             if ($retornoConsulta['codigo'] == 10) {
                 //Início a  query para atualização
                 $query = "update tbl_sala set ";
@@ -164,7 +168,7 @@ class M_sala extends CI_Model
                     $query .= "andar = $andar, ";
                 }
 
-                  if ($capacidade !== '') {
+                if ($capacidade !== '') {
                     $query .= "capacidade = $capacidade, ";
                 }
 
@@ -180,7 +184,6 @@ class M_sala extends CI_Model
                         'codigo' => 1,
                         'msg' => 'Sala atualizada corretamente.'
                     );
-
                 } else {
                     $dados = array(
                         'codigo' => 8,
@@ -188,10 +191,11 @@ class M_sala extends CI_Model
                     );
                 }
             } else {
-                $dados = array('codigo' => $retornoConsulta['codigo'],
-                               'msg' => $retornoConsulta['msg']);
+                $dados = array(
+                    'codigo' => $retornoConsulta['codigo'],
+                    'msg' => $retornoConsulta['msg']
+                );
             }
-
         } catch (Exception $e) {
             $dados = array(
                 'codigo' => 00,
@@ -203,8 +207,9 @@ class M_sala extends CI_Model
         return $dados;
     }
 
-    public function desativar($codigo){
-        try{
+    public function desativar($codigo)
+    {
+        try {
             //Verifico se a sala já está cadastrada
             $retornoConsulta = $this->consultaSala($codigo);
 
@@ -220,17 +225,17 @@ class M_sala extends CI_Model
                         'codigo' => 1,
                         'msg' => 'Sala DESATIVADA corretamente.'
                     );
-
                 } else {
                     $dados = array(
                         'codigo' => 8,
                         'msg' => 'Houve algum problema na DESATIVAÇÃO da Sala.'
                     );
                 }
-
             } else {
-                $dados = array('codigo' => $retornoConsulta['codigo'],
-                            'msg' => $retornoConsulta['msg']);
+                $dados = array(
+                    'codigo' => $retornoConsulta['codigo'],
+                    'msg' => $retornoConsulta['msg']
+                );
             }
         } catch (Exception $e) {
             $dados = array(
@@ -243,4 +248,3 @@ class M_sala extends CI_Model
         return $dados;
     }
 }
-?>
